@@ -110,9 +110,7 @@ void f_Object3d::CreateGraphicsPipeline()
 	gpipeline.SampleMask = D3D12_DEFAULT_SAMPLE_MASK; // 標準設定
 	// ラスタライザステート
 	gpipeline.RasterizerState = CD3DX12_RASTERIZER_DESC(D3D12_DEFAULT);
-	//gpipeline.RasterizerState.CullMode = D3D12_CULL_MODE_NONE;
-	//gpipeline.RasterizerState.FillMode = D3D12_FILL_MODE_WIREFRAME;
-	// デプスステンシルステート
+	
 	gpipeline.DepthStencilState = CD3DX12_DEPTH_STENCIL_DESC(D3D12_DEFAULT);
 
 	// レンダーターゲットのブレンド設定
@@ -213,6 +211,8 @@ void f_Object3d::Updata(XMFLOAT4 color, DirectXCommon* dxcomn, DebugCamera* came
 	//スケール、回転、平行移動行列の計算
 	matScale = XMMatrixScaling(scale.x, scale.y, scale.z);
 	matRot = XMMatrixIdentity();
+
+
 	matRot *= XMMatrixRotationZ(XMConvertToRadians(rotation.z));
 	matRot *= XMMatrixRotationX(XMConvertToRadians(rotation.x));
 	matRot *= XMMatrixRotationY(XMConvertToRadians(rotation.y));
@@ -247,7 +247,6 @@ void f_Object3d::Updata(XMFLOAT4 color, DirectXCommon* dxcomn, DebugCamera* came
 
 	//アニメーション
 	if (isPlay) {
-		//1フレーム進める
 		currentTime += frameTime;
 		//最後まで再生したら先頭に戻す
 		if (currentTime > endTime) {
