@@ -54,7 +54,6 @@ void Player::Update(XMFLOAT4 color, DirectXCommon* dxcomn, DebugCamera* camera)
 
 	RotationStatus();
 
-	
 	//エフェクトの再生
 	//effect->Load_Effect();
 	//エフェクトのアニメーション止める
@@ -75,37 +74,17 @@ void Player::Update(XMFLOAT4 color, DirectXCommon* dxcomn, DebugCamera* camera)
 	//effect->EffekseerUpdate(dxcomn, camera);
 
 	CollisionField(dxcomn,camera);
-	//character
-	
-	
 }
 
 
 void Player::normalAttack(DirectXCommon* dxcomn,TargetMarker*target, Enemy* enemy[], DebugCamera* camera)
 {
-	//float ex, ey, ez;
-	//Effect_Pos.x = position.x;
-	//Effect_Pos.y = position.y;
-	//Effect_Pos.z = position.z;
-	//
-	//	EffectRot.y = rotation.y;
-	//	EffectRot.z = 70;
-	//	effect->SetScale(3, 3, 3);
-	//effect->SetRotation(EffectRot.x, EffectRot.y, EffectRot.z);
-	////effect->SetPosition(ex,ey,ez);
-	//effect->SetPosition(Effect_Pos.x, Effect_Pos.y, Effect_Pos.z);
-
-	//effect->EffekseerUpdate(dxcomn, camera);
 	if (input->TriggerKey(DIK_SPACE) && !coolflag) {
 		if (!attackflag) {
 			attackflag = true;
 		}
 	}
 	if (attackflag) {
-		//Effect_Pos.x = enemy[target->GetNearIndex()]->GetPosition().x-10;
-		//Effect_Pos.y = enemy[target->GetNearIndex()]->GetPosition().y;
-		//Effect_Pos.z = enemy[target->GetNearIndex()]->GetPosition().z;
-		//effect->Load_Effect();
 		coolflag = true;
 		float distance = sqrtf(((enemy[target->GetNearIndex()]->GetPosition().x - position.x) * (enemy[target->GetNearIndex()]->GetPosition().x - position.x))
 			+ ((enemy[target->GetNearIndex()]->GetPosition().y - position.y) * (enemy[target->GetNearIndex()]->GetPosition().y - position.y))

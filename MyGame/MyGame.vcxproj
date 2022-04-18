@@ -157,6 +157,7 @@
     <ClCompile Include="DebugCamera.cpp" />
     <ClCompile Include="DebugTxt.cpp" />
     <ClCompile Include="DirectXCommon.cpp" />
+    <ClCompile Include="EffectManager.cpp" />
     <ClCompile Include="Effects.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="FbxLoader.cpp" />
@@ -173,6 +174,7 @@
     <ClCompile Include="MeshCollider.cpp" />
     <ClCompile Include="MobEnemy.cpp" />
     <ClCompile Include="Model.cpp" />
+    <ClCompile Include="ModelManager.cpp" />
     <ClCompile Include="MyGame.cpp" />
     <ClCompile Include="OBBCollision.cpp" />
     <ClCompile Include="Object3d.cpp" />
@@ -314,6 +316,7 @@
     <ClInclude Include="DebugTxt.h" />
     <ClInclude Include="DirectionalLight.h" />
     <ClInclude Include="DirectXCommon.h" />
+    <ClInclude Include="EffectManager.h" />
     <ClInclude Include="Effects.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="FbxLoader.h" />
@@ -329,6 +332,7 @@
     <ClInclude Include="MeshCollider.h" />
     <ClInclude Include="MobEnemy.h" />
     <ClInclude Include="Model.h" />
+    <ClInclude Include="ModelManager.h" />
     <ClInclude Include="MyGame.h" />
     <ClInclude Include="OBB.h" />
     <ClInclude Include="OBBCollision.h" />

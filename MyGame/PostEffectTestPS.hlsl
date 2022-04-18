@@ -6,27 +6,21 @@ float4 main(Output input) : SV_TARGET
 {
     float4 texcolor = tex.Sample(smp,input.uv);
     
-    float offsetU = 3.5f / 1280.0f;
-    float offsetV = 3.5f / 720.0f;
+    float offsetU = 5.0f / 1280.0f;
+    float offsetV = 5.0f / 720.0f;
+    //Ç∆ÇËÇ†Ç¶Ç∏ÇÃÇ⁄Ç©Çµ
     texcolor += tex.Sample(smp, input.uv + float2(offsetU, 0.0f));
-
     texcolor += tex.Sample(smp, input.uv + float2(-offsetU, 0.0f));
-
     texcolor += tex.Sample(smp, input.uv + float2(0.0f, offsetV));
-
     texcolor += tex.Sample(smp, input.uv + float2(0.0f, -offsetV));
-
     texcolor += tex.Sample(smp, input.uv + float2(offsetU, offsetV));
-
     texcolor += tex.Sample(smp, input.uv + float2(offsetU, -offsetV));
-
     texcolor += tex.Sample(smp, input.uv + float2(-offsetU, offsetV));
-
     texcolor += tex.Sample(smp, input.uv + float2(-offsetU, -offsetV));
-
     texcolor /= 9.0f;
 
     return float4(texcolor.rgb,1);
+
     //return float4(texcolor.rgb, 1);
 
     //êFà√Ç≠Ç»ÇÈÇ‚Ç¬
