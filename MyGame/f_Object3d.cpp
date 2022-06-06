@@ -198,6 +198,14 @@ bool f_Object3d::Initialize(DirectXCommon* dxcomn, DebugCamera* camerabool)
 		nullptr,
 		IID_PPV_ARGS(&constBuffSkin));
 
+	//
+	ConstBufferDataSkin* constMapSkin = nullptr;
+	result = constBuffSkin->Map(0, nullptr, (void**)&constMapSkin);
+	for (int i = 0; i < MAX_BONES; i++) {
+		//単位行列ぶちこむ
+		constMapSkin->bones[i] = XMMatrixIdentity();
+	}
+	constBuffSkin->Unmap(0, nullptr);
 	//1フレーム分の時間を60FPSで設定
 	frameTime.SetTime(0, 0, 0, 1, 0, FbxTime::EMode::eFrames60);
 
@@ -225,11 +233,11 @@ void f_Object3d::Updata(XMFLOAT4 color, DirectXCommon* dxcomn, DebugCamera* came
 	matWorld *= matTrans;			//ワールド行列に平行移動を反映
 
 	//ビュープロジェクション行列
-	const XMMATRIX& matViewProjection = camera->GetViewProjectionMatrix();
+	const XMMATRIX& matViewProjection = camerabool->GetViewProjectionMatrix();
 	//モデルのメッシュトランスフォーム
 	const XMMATRIX& modelTransform = model->GetModelTransform();
 	//カメラ座標
-	const XMFLOAT3& cameraPos = camera->GetEye();
+	const XMFLOAT3& cameraPos = camerabool->GetEye();
 
 	HRESULT result;
 	//定数バッファへのデータ転送

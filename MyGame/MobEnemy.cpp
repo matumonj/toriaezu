@@ -121,9 +121,9 @@ void MobEnemy::EnemySearchPlayer(Player* player)
 		//追跡
 		Follow(player);
 		//角度の取得 プレイヤーが敵の索敵位置に入ったら向きをプレイヤーの方に
-		rotx = atan2f(SubVector.m128_f32[0], SubVector.m128_f32[2]);
+		rotx = atan2f(SubVector.m128_f32[0], SubVector.m128_f32[2])*(180/DirectX::XM_PI);
 
-		Rotation.y = rotx * 60 + 180;//60=角度調整用 180=反転
+		Rotation.y = rotx + 180;//60=角度調整用 180=反転
 	}
 
 }

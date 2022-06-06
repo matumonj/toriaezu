@@ -85,7 +85,7 @@ void PlayScene::ModelCreate(DirectXCommon* dxcomn, DebugCamera* camera)
 	}
 	//FBX周り
 	//モデル名を指定してファイル読み込み
-	fbxmodel = FbxLoader::GetInstance()->LoadModelFromFile("Motti_idol");
+	fbxmodel = FbxLoader::GetInstance()->LoadModelFromFile("shark");
 
 	//デバイスをセット
 	f_Object3d::SetDevice(dxcomn->GetDev());
@@ -221,18 +221,19 @@ void PlayScene::Update(DirectXCommon* dxCommon)
 	}
 	
 	//FBXモデルの更新
-	object1->Updata({1,1,1,1},dxcomn,camera,TRUE);
+
 	//カメラの移動(プレイヤーを中心に回る感じ)
-	CameraPosition.x = player->GetPosition().x + cosf((float)(cameraAngle) * 3.14f / 180.0f) * 25;
-	CameraPosition.z = player->GetPosition().z + sinf((float)(cameraAngle) * 3.14f / 180.0f) * 25;
-	CameraPosition.y = player->GetPosition().y + 9;
+	CameraPosition.x = object1->GetPosition().x;// +cosf((float)(cameraAngle) * 3.14f / 180.0f) * 25;
+	CameraPosition.z = object1->GetPosition().z-50 ;// +sinf((float)(cameraAngle) * 3.14f / 180.0f) * 25;
+	CameraPosition.y = object1->GetPosition().y;
 
 	//カメラ関係の処理
-	camera->SetDistance(distance);//距離
+	//camera->SetDistance(distance);//距離
 	camera->SetEye(CameraPosition);//位置
-	camera->SetTarget({player->GetPosition().x,player->GetPosition().y,player->GetPosition().z});//注視点
+	camera->SetTarget({object1->GetPosition().x,object1->GetPosition().y,object1->GetPosition().z});//注視点
 	camera->Update();
 
+	object1->Updata({ 1,1,1,1 }, dxcomn, camera, TRUE);
 	objUpdate(dxcomn, camera);//オブジェクトの更新処理
 	
 	//当たり判定の処理(OBB)後で分けたほうがいい

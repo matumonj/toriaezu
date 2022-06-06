@@ -79,9 +79,9 @@ protected:
 	//定数バッファ
 	ComPtr<ID3D12Resource> constBuffTransform;
 	//スケール
-	XMFLOAT3 scale = { 1, 1, 1 };
+	XMFLOAT3 scale = { 0.07,0.07,0.07 };
 	//回転
-	XMFLOAT3 rotation = { 0, 0, 0 };
+	XMFLOAT3 rotation = { 0, 90, 0 };
 	//座標
 	XMFLOAT3 position = { 0, -50, 0 };
 	//ワールド変換行列
@@ -104,7 +104,7 @@ protected:
 public:	
 	void Setpos(XMFLOAT3 pos) { position = pos; }
 	//ボーンの最大数
-	static const int MAX_BONES = 180;
+	static const int MAX_BONES = 50;
 	XMFLOAT3 GetPosition() { return position; }
 	//定数バッファ用データ構造体（スキニング）
 	struct ConstBufferDataSkin
